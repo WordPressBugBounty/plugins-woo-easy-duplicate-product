@@ -1,0 +1,1 @@
+# plugins-woo-easy-duplicate-product
