@@ -53,12 +53,13 @@ class Duplicate
 
 	if(isset($_POST['wedp_multiple_product_duplicate'])){
 		//Let's verify our nonce
-		$nonce = $_REQUEST['_wp_nonce'];
-		if(! wp_verify_nonce($nonce, 'wedp-duplicate-product-nonce')){
+		$nonce = (isset($_REQUEST['_wp_nonce'])) ? sanitize_text_field(wp_unslash($_REQUEST['_wp_nonce'])) : null;
+		if(!wp_verify_nonce($nonce, 'wedp-duplicate-product-nonce')){
 			die("Why oh why you do me dat? Why?");
 		}
-		$product_id = $_POST['product_id'];
-		$multiple_products_number = $_POST['multiple_products_number'];
+
+		$product_id = (isset($_POST['product_id'])) ? sanitize_text_field(wp_unslash($_POST['product_id'])) : null;
+		$multiple_products_number = (isset($_POST['multiple_products_number'])) ? sanitize_text_field(wp_unslash($_POST['multiple_products_number'])) : null;
 
 		$duplicated = [];
 
@@ -89,8 +90,10 @@ class Duplicate
 
 		];
 
-		print_r(json_encode($message));
-
+		//$message = json_encode($message);
+		
+		echo wp_json_encode($message);
+		
 
 	} else {
 

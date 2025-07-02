@@ -19,7 +19,7 @@ class Dashboard
 	}
 
 	function wpgem_useful_info_box(){
-		include WP_PLUGIN_DIR . '/woo-easy-duplicate-product/info-box.php';
+		include WEDP_PLUGIN_DIR . '/info-box.php';
 	}
 	function wedp_duplicate_product_admin_bar_button($admin_bar){
 
@@ -31,7 +31,7 @@ class Dashboard
 		}
 
 		$post_type = $post->post_type;
-		$action = (isset($_GET['action'])) ? $_GET['action'] : '';
+		$action = (isset($_GET['action'])) ? sanitize_text_field(wp_unslash($_GET['action'])) : '';
 		if( 'product' != $post_type ){
 
 			return;
@@ -91,8 +91,8 @@ class Dashboard
 	function wedp_custom_bulk_admin_notices() {
 
 	  if(isset($_GET['wedp_duplicated'])){
-	;
-	  	$total_updated = $_GET['wedp_duplicated'];
+	
+	  	$total_updated = sanitize_text_field(wp_unslash($_GET['wedp_duplicated']));
 	  	$total_updated = preg_replace('/[^0-9]/', '', $total_updated); //Let's sanitize this
 
 			if(!is_numeric($total_updated)){
@@ -101,7 +101,7 @@ class Dashboard
 
 	  	$message = "{$total_updated} products duplicated.";
 
-	  	echo  '<div class="updated"><p>'. $message .'</p></div>';
+	  	echo  '<div class="updated"><p>'. esc_html($message) .'</p></div>';
 	  }
 	}
 

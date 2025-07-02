@@ -20,6 +20,12 @@ class Init
 			return;
 		}
 
+		$plugin_dir = plugin_dir_path(__FILE__);
+
+		$plugin_dir = str_replace('includes/', '', $plugin_dir);
+
+		define ('WEDP_PLUGIN_DIR', $plugin_dir);
+
 		$this->scripts();
 
 		new Dashboard;
