@@ -5,7 +5,7 @@ Donate link: https://paypal.me/phpdevelopers/18usd
 Requires at least: 4.0
 Tested up to: 6.8
 Requires PHP: 5.6
-Stable tag: 0.4.2.1
+Stable tag: 0.4.2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 

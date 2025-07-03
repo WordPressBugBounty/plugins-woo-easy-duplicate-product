@@ -6,7 +6,7 @@ namespace WooEasyDuplicateProduct;
  * Author: WPCava.com
  * Plugin URI: http://wpcava.com/woo-easy-duplicate
  * Description: An easy and convenient way for you to duplicate a product.
- * Version: 0.4.2.1
+ * Version: 0.4.2.2
  * Author URI: https://support.wpcava.com
  * Requires Plugins: woocommerce
  * Requires at least: 4.0

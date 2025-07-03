@@ -32,8 +32,13 @@ class Duplicate
 		
 
 		foreach ($post_ids as $product_id) {
+
+			if ( ! current_user_can( 'edit_post', $product_id ) ) {
+		   		continue;
+			}
 			
 			$duplicate_product = $this->duplicate_product ($product_id);
+
 
 			if($duplicate_product){
 				$duplicate[] = $duplicate_product;
@@ -59,6 +64,11 @@ class Duplicate
 		}
 
 		$product_id = (isset($_POST['product_id'])) ? sanitize_text_field(wp_unslash($_POST['product_id'])) : null;
+
+		if ( ! current_user_can( 'edit_post', $product_id ) ) {
+		   return false;
+		}
+
 		$multiple_products_number = (isset($_POST['multiple_products_number'])) ? sanitize_text_field(wp_unslash($_POST['multiple_products_number'])) : null;
 
 		$duplicated = [];
